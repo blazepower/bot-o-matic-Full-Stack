@@ -1,0 +1,8 @@
+export enum RobotTypes {
+  UNIPEDAL,
+  BIPEDAL,
+  QUADRUPEDAL,
+  ARACHINID,
+  RADIAL,
+  AERONAUTICAL
+}
