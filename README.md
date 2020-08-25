@@ -1,16 +1,16 @@
-#Rishik Hombal Implementation
+# Rishik Hombal Implementation
 The languages used in this project are Java with a Spring Boot Framework and Javascript/TypeScript with an Angular CLI Framework
 
 ## What you will need to download to run this project
 First and foremost you need to install Java.  I used the latest version of Java 8 for this project, but I imagine it would work with any higher version as well.  I used Maven to install dependencies for the back end server.
 You will need to download that as well.  For the front end, all you will need to download is the NPM package manager.  All of these are free.
 
-##How to run the project
+## How to run the project
 You will first need to install all the back end dependencies using the maven package manager and the front end dependencies with NPM.  You can do this any way you choose, but I use the command line commands: NPM install and with the built in maven package manager in Intellij.  If you have an advanced IDE, it will probably do both of these for you.
 Next you will need to run the backend server.  The main runner class is 'src/main/java/rishik/red_ventures/application/botomat/BotOMatApplication.java'.  You will need to compile and run this file.
 After that, you will need to run the front end server.  You should be able to do this with ng serve -o.  This will open a tab that is listening on localhost:4200.
 
-##What my Project Does
+## What my Project Does
 The project consists of 4 pages: Dashboard (the landing page), Create Robot, Add Task, and Leaderboard.  The dashboard will hold the robots that you create, and you will be able to run them from this page.
 To get started, you will first need to make a robot.  You can do this by going to the 'Create Robot' page.  You can then add a name and type of robot as well as assign tasks to it.  Note, per the project requirements, you cannot add more than 5 tasks at any one time.
 This will take you back to the dashboard page.  On the dashboard page you will see the information that you just entered and there will also be a start button.  This button will start all the tasks for the selected robot.  Once the robot finishes, there will be a notification that pops up at the bottom of the screen. To add tasks to a robot that has finished all tasks, click on the name or type of the robot.
