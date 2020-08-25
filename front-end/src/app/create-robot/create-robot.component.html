@@ -1,0 +1,36 @@
+<mat-toolbar>
+  <button mat-raised-button (click)="dashboard()">Dashboard</button>
+  <button mat-raised-button (click)="addRobot()">Add Robot</button>
+  <button mat-raised-button (click)="addTask()">Add Task</button>
+  <button mat-raised-button [routerLink]="['/leaderboard']">Leaderboard</button>
+</mat-toolbar>
+
+<div class="form-group">
+  <form [formGroup]="createRobotForm">
+    <div class="d-flex">
+      <mat-form-field class="flex-grow-1">
+        <input matInput placeholder="Robot Name" formControlName="robotName" required>
+        <mat-error *ngIf="createRobotForm.controls.robotName.invalid">You must enter a name for the robot</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="d-flex">
+      <mat-form-field class="flex-grow-1">
+        <mat-label>Select a Robot Type</mat-label>
+        <mat-select disableRipple formControlName="robotType" required>
+          <mat-option *ngFor="let type of robotTypes" [value]="type">{{type | titlecase}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="createRobotForm.controls.robotType.invalid">You must enter a name for the robot</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="d-flex">
+      <mat-form-field class="flex-grow-1">
+        <mat-label>Add tasks to this robot</mat-label>
+        <mat-select formControlName="jobs" [errorStateMatcher]="matcher" multiple required>
+          <mat-option *ngFor="let task of taskList" [value]="task">{{task.description | titlecase}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="createRobotForm.get('jobs').value.length > 5">You can enter a max of 5 jobs for a Robot</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<button mat-button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>

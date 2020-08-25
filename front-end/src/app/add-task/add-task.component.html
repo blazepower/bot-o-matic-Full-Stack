@@ -1,0 +1,22 @@
+<mat-toolbar>
+  <button mat-raised-button (click)="dashboard()">Dashboard</button>
+  <button mat-raised-button (click)="addRobot()">Add Robot</button>
+  <button mat-raised-button (click)="addTask()">Add Task</button>
+  <button mat-raised-button [routerLink]="['/leaderboard']">Leaderboard</button>
+</mat-toolbar>
+
+<form [formGroup]="addTaskForm">
+  <div class="d-flex">
+    <mat-form-field class="flex-grow-1">
+      <input matInput placeholder="Task Description" formControlName="taskDescription" required>
+      <mat-error *ngIf="addTaskForm.controls.taskDescription.invalid">You must enter a description for the task</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="d-flex">
+    <mat-form-field class="flex-grow-1">
+      <input matInput placeholder="Task ETA" formControlName="taskEta" required>
+      <mat-error *ngIf="addTaskForm.controls.taskEta.invalid">You must enter an eta for the task</mat-error>
+    </mat-form-field>
+  </div>
+</form>
+<button mat-button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>

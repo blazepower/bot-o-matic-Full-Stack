@@ -1,0 +1,24 @@
+<mat-toolbar>
+  <button mat-raised-button (click)="dashboard()">Dashboard</button>
+  <button mat-raised-button (click)="addRobot()">Add Robot</button>
+  <button mat-raised-button (click)="addTask()">Add Task</button>
+  <button mat-raised-button [routerLink]="['/leaderboard']">Leaderboard</button>
+</mat-toolbar>
+<div *ngIf="robots; else NoRobots">
+  <mat-card *ngFor="let robot of robots">
+    <mat-card-header (click)="onRobotselect(robot)">
+      <mat-card-title>{{robot.name}}</mat-card-title>
+      <mat-card-subtitle>{{robot.robotTypes | titlecase}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content *ngFor="let task of robot.tasks">
+      <span>{{task.description | titlecase}} | </span>
+      <span>{{task.eta}} milliseconds</span>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onStartSelect(robot)">Start Robot</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<ng-template #NoRobots>
+  <h1>There are no robots</h1>
+</ng-template>
